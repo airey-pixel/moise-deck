@@ -809,7 +809,7 @@ document.querySelectorAll('#langbar button').forEach(b=>b.onclick=()=>{
  document.body.dataset.lang=b.dataset.l;
  document.querySelectorAll('#langbar button').forEach(x=>x.classList.toggle('on',x===b))});
 function fit(){const f=document.getElementById('frame'),z=document.getElementById('sizer');
- let s=Math.min(innerWidth/1280,innerHeight/720); s=Math.max(s,0.55);
+ let s=Math.min(innerWidth/1280,innerHeight/720); s=Math.max(s,0.80);
  f.style.transform='scale('+s+')'; z.style.width=(1280*s)+'px'; z.style.height=(720*s)+'px'}
 addEventListener('resize',fit);fit();sync();
 // ── 바이어 문의 폼: Apps Script 웹앱 URL을 아래에 넣으면 시트 기록+PDF 자동발송 활성화 ──
