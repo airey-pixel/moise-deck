@@ -27,8 +27,9 @@ body[data-lang="ko"] span.ko{display:inline}
 body[data-lang="en"] span.en{display:inline}
 body[data-lang="jp"] span.jp{display:inline}
 
-#stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
-#frame{position:relative;width:1280px;height:720px;transform-origin:center center;box-shadow:0 30px 90px rgba(0,0,0,.45)}
+#stage{position:fixed;inset:0;display:flex;overflow:auto;-webkit-overflow-scrolling:touch}
+#sizer{flex:none;margin:auto}
+#frame{position:relative;width:1280px;height:720px;transform-origin:top left;box-shadow:0 30px 90px rgba(0,0,0,.45)}
 .slide{position:absolute;inset:0;opacity:0;word-break:keep-all;overflow-wrap:break-word;pointer-events:none;transition:opacity .55s ease;overflow:hidden}
 .slide.active{opacity:1;pointer-events:auto}
 
@@ -241,6 +242,28 @@ body[data-lang="ko"] .pslide .hook p,body[data-lang="jp"] .pslide .hook p{font-f
 .cta .k{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.18em;color:var(--lime);white-space:nowrap}
 .cta p{font-size:13px;color:#fff;font-weight:600}
 .cta a{color:var(--pink2);text-decoration:none;border-bottom:1px solid rgba(242,175,194,.5)}
+
+/* contact form */
+.bform{margin-top:24px;display:flex;flex-direction:column;align-items:center;gap:8px;width:min(560px,80%)}
+.bform .flabel{font-size:12px;color:#fff;opacity:.92}
+.bform .frow{display:flex;gap:8px;width:100%}
+.bform input,.bform textarea{flex:1;border:1px solid rgba(255,255,255,.55);background:rgba(255,255,255,.16);border-radius:4px;padding:10px 14px;font-family:inherit;font-size:12.5px;color:#fff;outline:none;resize:none}
+.bform input::placeholder,.bform textarea::placeholder{color:rgba(255,255,255,.65)}
+.bform button{border:0;background:var(--ink);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;padding:11px 20px;border-radius:4px;cursor:pointer;white-space:nowrap}
+.bform .fmsg{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:#fff;min-height:14px}
+.pdfbtn{margin-top:16px;border:1px solid rgba(255,255,255,.75);background:rgba(255,255,255,.18);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;padding:9px 18px;border-radius:99px;cursor:pointer}
+
+/* print */
+@media print{
+  @page{size:338.7mm 190.5mm;margin:0}
+  html,body{overflow:visible;background:#fff}
+  #langbar,.navarr,#dots,.pagenum,.vtog,.bform,.pdfbtn{display:none!important}
+  #stage{position:static;overflow:visible}
+  #sizer{margin:0}
+  #frame{transform:none!important;box-shadow:none;width:1280px;height:auto}
+  .slide{position:relative;opacity:1!important;pointer-events:auto;width:1280px;height:720px;page-break-after:always;break-after:page;overflow:hidden}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+}
 .s12 .addr{font-size:11px;opacity:.8;margin-top:6px;color:#fff;line-height:1.7}
 .vtog{position:absolute;left:18px;bottom:16px;z-index:8;display:flex;gap:5px;opacity:.9;transition:.3s;align-items:center}
 .vtog a{border:1px solid rgba(255,255,255,.7);background:rgba(255,255,255,.2);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.1em;padding:3px 9px;border-radius:99px;text-decoration:none}
@@ -251,7 +274,7 @@ body[data-lang="ko"] .pslide .hook p,body[data-lang="jp"] .pslide .hook p{font-f
 </style>
 </head>
 <body data-lang="ko" data-lipv="1">
-<div id="stage"><div id="frame">
+<div id="stage"><div id="sizer"><div id="frame">
 
 <!-- 01 COVER -->
 <section class="slide s1 active">
@@ -745,6 +768,14 @@ body[data-lang="ko"] .pslide .hook p,body[data-lang="jp"] .pslide .hook p{font-f
       <span class="jp">INSTAGRAM <a href="https://instagram.com/moisebeautyjp" target="_blank">@moisebeautyjp</a> · TIKTOK <a href="https://www.tiktok.com/@moisebeautyofficial" target="_blank">@moisebeautyofficial</a> · THREADS <a href="https://www.threads.net/@moisebeauty" target="_blank">@moisebeauty</a><br>LINE <a href="https://line.me/R/ti/p/@379mygzb" target="_blank">@379mygzb</a>（MOISĒ モアゼ）</span>
     </div>
     
+    <button class="pdfbtn" type="button" onclick="window.print()">DOWNLOAD PDF ↓</button>
+
+    <form class="bform" id="bform">
+      <div class="flabel"><span class="ko">이메일을 남겨주시면, 선호하시는 언어의 PDF 소개서를 보내드립니다.</span><span class="en">Leave your email — we'll send this deck as a PDF in your language.</span><span class="jp">メールをご記入いただければ、ご希望言語のPDF資料をお送りします。</span></div>
+      <div class="frow"><input type="email" id="bemail" required placeholder="Email *"><button type="submit"><span class="ko">PDF 요청</span><span class="en">REQUEST PDF</span><span class="jp">PDFを受け取る</span></button></div>
+      <textarea id="bmsg" rows="2" placeholder="Message (optional)" style="width:100%"></textarea>
+      <div class="fmsg" id="fmsg"></div>
+    </form>
     <div class="addr">
       <span class="ko">경기 시흥시 배곧2로 82, 서울대학교 시흥캠퍼스 207호</span>
       <span class="en">207, 82 Baegot 2-ro, Siheung-si, Gyeonggi-do, Republic of Korea (SNU Siheung Campus)</span>
@@ -753,7 +784,7 @@ body[data-lang="ko"] .pslide .hook p,body[data-lang="jp"] .pslide .hook p{font-f
   </div>
 </section>
 
-</div></div>
+</div></div></div>
 
 <div id="langbar">
   <button data-l="ko" class="on">KO</button><button data-l="en">EN</button><button data-l="jp">JP</button>
@@ -777,8 +808,30 @@ addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(cur+1);if
 document.querySelectorAll('#langbar button').forEach(b=>b.onclick=()=>{
  document.body.dataset.lang=b.dataset.l;
  document.querySelectorAll('#langbar button').forEach(x=>x.classList.toggle('on',x===b))});
-function fit(){const f=document.getElementById('frame');const s=Math.min(innerWidth/1280,innerHeight/720);f.style.transform='scale('+s+')'}
+function fit(){const f=document.getElementById('frame'),z=document.getElementById('sizer');
+ let s=Math.min(innerWidth/1280,innerHeight/720); s=Math.max(s,0.55);
+ f.style.transform='scale('+s+')'; z.style.width=(1280*s)+'px'; z.style.height=(720*s)+'px'}
 addEventListener('resize',fit);fit();sync();
+// ── 바이어 문의 폼: Apps Script 웹앱 URL을 아래에 넣으면 시트 기록+PDF 자동발송 활성화 ──
+const SCRIPT_URL='';
+const DECKVER=(location.pathname.split('/').pop()||'local').replace('.html','');
+document.getElementById('bform').addEventListener('submit',async e=>{
+ e.preventDefault();
+ const email=document.getElementById('bemail').value.trim();
+ const msg=document.getElementById('bmsg').value.trim();
+ const lang=document.body.dataset.lang;
+ const fm=document.getElementById('fmsg');
+ if(SCRIPT_URL){
+  try{
+   await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({email,msg,lang,ver:DECKVER,ts:new Date().toISOString()})});
+   fm.textContent={ko:'요청 완료 — 곧 메일로 보내드릴게요.',en:'Done — check your inbox shortly.',jp:'送信完了 — まもなくメールをお送りします。'}[lang];
+   e.target.reset();
+  }catch(err){fm.textContent='ERROR — hello@moise.co.kr'}
+ }else{
+  location.href='mailto:hello@moise.co.kr?subject='+encodeURIComponent('[MOISE Deck] PDF request ('+lang.toUpperCase()+')')+'&body='+encodeURIComponent('Email: '+email+'\nLang: '+lang+'\nVersion: '+DECKVER+'\n\n'+msg);
+  fm.textContent={ko:'메일 앱이 열립니다 — 그대로 보내주세요.',en:'Your mail app will open — just hit send.',jp:'メールアプリが開きます — そのまま送信してください。'}[lang];
+ }
+});
 // LIP V1(현행)/V2(리뉴얼) — 2p 모델컷·6p 제품컷·라인업 카드 동시 스왑
 const lipimg=document.getElementById('lipimg'),shiftimg=document.getElementById('shiftimg'),lipcard=document.getElementById('lipcard');
 const VSRC={
