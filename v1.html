@@ -253,6 +253,63 @@ body[data-lang="ko"] .pslide .hook p,body[data-lang="jp"] .pslide .hook p{font-f
 .bform .fmsg{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:#fff;min-height:14px}
 .pdfbtn{margin-top:16px;border:1px solid rgba(255,255,255,.75);background:rgba(255,255,255,.18);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;padding:9px 18px;border-radius:99px;cursor:pointer}
 
+
+/* ---- JP typography: proper line-breaking & density ---- */
+body[data-lang="jp"] .slide{word-break:normal;line-break:strict}
+body[data-lang="jp"] .pcol li{font-size:11.4px;line-height:1.5}
+body[data-lang="jp"] .tcell .tl{font-size:9.2px}
+body[data-lang="jp"] .swc p{font-size:11.4px}
+body[data-lang="jp"] .swc h3{font-size:16.5px}
+body[data-lang="jp"] .sw h2,body[data-lang="jp"] .s11 h2{font-size:38px}
+body[data-lang="jp"] .gap p{font-size:11.8px}
+body[data-lang="jp"] .why p{font-size:11.8px}
+body[data-lang="jp"] .brow .v{font-size:12.4px}
+body[data-lang="jp"] .pslide h2{font-size:26px}
+body[data-lang="jp"] .pslide .sub{font-size:12px}
+body[data-lang="jp"] .s2 h2,body[data-lang="jp"] .s3 h2{font-size:41px}
+body[data-lang="jp"] .fnote{font-size:8px;letter-spacing:.02em}
+.pcol .ph{flex-wrap:wrap}
+.chip{white-space:nowrap}
+
+/* ---- responsive frame width (70~100%) ---- */
+#frame{container-type:inline-size}
+@container (max-width:1150px){
+  .s1 h1{font-size:56px}
+  .s2 h2{font-size:40px}.s3 h2{font-size:38px}.s4 h2{font-size:40px}
+  .s5 h2{font-size:35px}.sw h2{font-size:36px}.s11 h2{font-size:36px}.s10 h2{font-size:31px}
+  .s12 .big{font-size:45px}
+  body[data-lang="jp"] .sw h2,body[data-lang="jp"] .s11 h2{font-size:34px}
+  body[data-lang="jp"] .s2 h2,body[data-lang="jp"] .s3 h2{font-size:37px}
+  body[data-lang="jp"] .pslide h2{font-size:23px}
+  .s2 .lede,.s3 .lede,.sw .lede,.s11 .lede{font-size:13.5px;margin-bottom:26px}
+  .lcard .imgw{height:150px}
+  .pslide .photo{width:35%}
+  .pslide .content{left:calc(35% + 40px);right:46px}
+  .pslide h2{font-size:25px}
+  .pslide .hook{left:30px;bottom:30px;max-width:calc(35cqw - 56px)}
+  .pslide .hook p{font-size:20px}
+  body[data-lang="ko"] .pslide .hook p,body[data-lang="jp"] .pslide .hook p{font-size:16px}
+  .pcols{gap:16px}
+  .pcol li{font-size:11.4px}
+  .gaps,.swgrid{gap:12px}
+  .gap,.swc{padding:19px 18px 17px}
+  .gap p{font-size:11.8px}.swc p{font-size:11.4px}
+  .swc h3{font-size:16px}
+  .why{padding:17px 18px 15px;gap:12px}
+  .why p{font-size:11.8px}
+  .whys{gap:11px}
+  .susgrid{gap:11px}
+  .sus{padding:16px 16px 14px}
+  .s9 .quote{font-size:33px}
+  .s9 .quoteko{font-size:17px}
+  .tcell{padding:11px 11px 10px;min-height:88px}
+  .tcell .tn{font-size:12px}.tcell .tl{font-size:9.2px}
+  .brow .k{width:96px}
+  .clinnums{gap:18px}.clinnums .c .n{font-size:25px}
+  .stat .num{font-size:22px}
+  .mkt{gap:22px}
+}
+
 /* print */
 @media print{
   @page{size:338.7mm 190.5mm;margin:0}
@@ -806,8 +863,14 @@ document.querySelectorAll('#langbar button').forEach(b=>b.onclick=()=>{
  document.body.dataset.lang=b.dataset.l;
  document.querySelectorAll('#langbar button').forEach(x=>x.classList.toggle('on',x===b))});
 function fit(){const f=document.getElementById('frame'),z=document.getElementById('sizer');
- let s=Math.min(innerWidth/1280,innerHeight/720); s=Math.max(s,0.70);
- f.style.transform='scale('+s+')'; z.style.width=(1280*s)+'px'; z.style.height=(720*s)+'px'}
+ const W=1280,H=720,MINW=896,w=innerWidth,h=innerHeight;
+ const mob=matchMedia('(pointer:coarse)').matches&&w<=820;
+ let s=h/H, fw=w/s;
+ if(fw>=W){fw=W}
+ else if(fw<MINW){ if(mob){fw=MINW;s=Math.min(h/H,1)} else {fw=MINW;s=w/MINW} }
+ else{fw=Math.round(fw)}
+ f.style.width=fw+'px';
+ f.style.transform='scale('+s+')'; z.style.width=(fw*s)+'px'; z.style.height=(720*s)+'px'}
 addEventListener('resize',fit);fit();sync();
 // ── 바이어 문의 폼: Apps Script 웹앱 URL을 아래에 넣으면 시트 기록+PDF 자동발송 활성화 ──
 const SCRIPT_URL='';
