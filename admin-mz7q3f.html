@@ -316,6 +316,10 @@ body[data-lang="jp"] .fnote{font-size:8px;letter-spacing:.02em}
 /* print */
 @media print{
   @page{size:338.7mm 190.5mm;margin:0}
+  *{text-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;filter:none!important}
+  .s1 .photo,.s2 .photo,.s9 .photo{-webkit-mask-image:none!important;mask-image:none!important}
+  .s1 .photo::before{background:linear-gradient(90deg,var(--pink2) 0%,rgba(242,175,194,0) 34%)!important}
+  .s2 .photo::before,.s9 .photo::before{background:linear-gradient(90deg,var(--cream) 0%,rgba(246,241,233,0) 34%)!important}
   html,body{overflow:visible;background:#fff}
   #langbar,.navarr,#dots,.pagenum,.vtog,.bform,.pdfbtn{display:none!important}
   #stage{position:static;overflow:visible}
