@@ -864,6 +864,9 @@ addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(cur+1);if
 document.querySelectorAll('#langbar button').forEach(b=>b.onclick=()=>{
  document.body.dataset.lang=b.dataset.l;
  document.querySelectorAll('#langbar button').forEach(x=>x.classList.toggle('on',x===b))});
+(()=>{const q=new URLSearchParams(location.search).get('lang');
+ if(q&&['ko','en','jp'].includes(q)){document.body.dataset.lang=q;
+  document.querySelectorAll('#langbar button').forEach(x=>x.classList.toggle('on',x.dataset.l===q));}})();
 function fit(){const f=document.getElementById('frame'),z=document.getElementById('sizer');
  const W=1280,H=720,MINW=896,w=innerWidth,h=innerHeight;
  const mob=matchMedia('(pointer:coarse)').matches&&w<=820;
@@ -874,8 +877,9 @@ function fit(){const f=document.getElementById('frame'),z=document.getElementByI
  f.style.width=fw+'px';
  f.style.transform='scale('+s+')'; z.style.width=(fw*s)+'px'; z.style.height=(720*s)+'px'}
 addEventListener('resize',fit);fit();sync();
-// ── 바이어 문의 폼: Apps Script 웹앱 URL을 아래에 넣으면 시트 기록+PDF 자동발송 활성화 ──
-const SCRIPT_URL='';
+// ── 바이어 문의 폼: 구글폼 접수 → 시트 기록 + 현재 언어 PDF/덱 자동발송 (hello@moise.co.kr) ──
+const FORM_URL='https://docs.google.com/forms/d/e/1FAIpQLSdBh0A3GyP8N-SomulumTdqI8XomZV_5gFhVDmBNElyxBexfg/formResponse';
+const FE={email:'entry.2035690014',lang:'entry.1691696352',ver:'entry.1262600146',msg:'entry.2035040769'};
 const DECKVER=(location.pathname.split('/').pop()||'local').replace('.html','');
 document.getElementById('bform').addEventListener('submit',async e=>{
  e.preventDefault();
@@ -883,13 +887,13 @@ document.getElementById('bform').addEventListener('submit',async e=>{
  const msg=document.getElementById('bmsg').value.trim();
  const lang=document.body.dataset.lang;
  const fm=document.getElementById('fmsg');
- if(SCRIPT_URL){
-  try{
-   await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({email,msg,lang,ver:DECKVER,ts:new Date().toISOString()})});
-   fm.textContent={ko:'요청 완료 — 곧 메일로 보내드릴게요.',en:'Done — check your inbox shortly.',jp:'送信完了 — まもなくメールをお送りします。'}[lang];
-   e.target.reset();
-  }catch(err){fm.textContent='ERROR — hello@moise.co.kr'}
- }else{
+ try{
+  const body=new URLSearchParams();
+  body.set(FE.email,email);body.set(FE.lang,lang);body.set(FE.ver,DECKVER);body.set(FE.msg,msg);
+  await fetch(FORM_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body.toString()});
+  fm.textContent={ko:'요청 완료 — 곧 메일로 보내드릴게요.',en:'Done — check your inbox shortly.',jp:'送信完了 — まもなくメールをお送りします。'}[lang];
+  e.target.reset();
+ }catch(err){
   location.href='mailto:hello@moise.co.kr?subject='+encodeURIComponent('[MOISE Deck] PDF request ('+lang.toUpperCase()+')')+'&body='+encodeURIComponent('Email: '+email+'\nLang: '+lang+'\nVersion: '+DECKVER+'\n\n'+msg);
   fm.textContent={ko:'메일 앱이 열립니다 — 그대로 보내주세요.',en:'Your mail app will open — just hit send.',jp:'メールアプリが開きます — そのまま送信してください。'}[lang];
  }
