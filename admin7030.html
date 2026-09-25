@@ -27,6 +27,26 @@ body[data-lang="ko"] span.ko{display:inline}
 body[data-lang="en"] span.en{display:inline}
 body[data-lang="jp"] span.jp{display:inline}
 
+/* SPECS & DOCS slides */
+.specs .stable{width:100%;border-collapse:collapse;font-size:12px;line-height:1.42;margin-top:12px}
+.specs .stable th,.specs .stable td{border:1px solid rgba(35,39,42,.13);padding:5px 10px;text-align:left;vertical-align:top}
+.specs .stable thead th{background:var(--pink1);font-weight:700;font-size:12.5px}
+.specs .stable td.h{background:var(--cream);font-weight:600;white-space:nowrap;width:118px}
+.specs .m{font-family:'IBM Plex Mono',monospace;font-size:11.5px}
+.specs .tbc,.docs .tbc{display:inline-block;background:var(--pink1);color:var(--rose);font-family:'IBM Plex Mono',monospace;font-size:9.5px;padding:0 7px;border-radius:99px;letter-spacing:.05em;vertical-align:1px}
+.specs .sub{color:var(--gray);font-size:10.5px}
+.docs .dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.docs .dcol{border:1px solid rgba(35,39,42,.12);padding:12px 14px 10px}
+.docs .dcol h3{font-size:13px;line-height:1.3;margin:0 0 2px}
+.docs .dcol .lab{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;color:var(--rose);margin:9px 0 3px}
+.docs .dcol .lab.p{color:var(--gray)}
+.docs .dcol ul{list-style:none;margin:0;padding:0}
+.docs .dcol li{font-size:11px;line-height:1.35;color:var(--ink);padding:2.5px 0 2.5px 12px;position:relative}
+.docs .dcol li::before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--rose)}
+.docs .dcol ul.p li{color:var(--gray)}
+.docs .dcol ul.p li::before{background:none;border:1px solid var(--gray)}
+.docs .dcol .code{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--gray)}
+
 #stage{position:fixed;inset:0;display:flex;overflow:auto;-webkit-overflow-scrolling:touch}
 #sizer{flex:none;margin:auto}
 #frame{position:relative;width:1280px;height:720px;transform-origin:top left;box-shadow:0 30px 90px rgba(0,0,0,.45)}
@@ -813,6 +833,88 @@ body[data-lang="jp"] .fnote{font-size:8px;letter-spacing:.02em}
       <span class="k">WHOLESALE · B2B · COLLAB</span>
       <p><span class="ko">홀세일 · B2B · 협업 문의는 <a href="mailto:hello@moise.co.kr">hello@moise.co.kr</a> — 확인 즉시 회신드립니다.</span><span class="en">Wholesale, B2B and collaboration inquiries: <a href="mailto:hello@moise.co.kr">hello@moise.co.kr</a> — we reply as soon as we read it.</span><span class="jp">ホールセール・B2B・コラボのお問い合わせは <a href="mailto:hello@moise.co.kr">hello@moise.co.kr</a> — 確認次第すぐ返信します。</span></p>
     </div>
+  </div>
+</section>
+
+<!-- 13 SPECS -->
+<section class="slide sw specs">
+  <div class="content">
+    <div class="eyebrow">13 — SPECS &amp; LOGISTICS</div>
+    <h2>
+      <span class="ko">제품 규격 &amp; <em>물류 스펙.</em></span><span class="en">Product &amp; <em>logistics specs.</em></span><span class="jp">製品規格 &amp; <em>物流スペック。</em></span>
+    </h2>
+    <p class="lede"><span class="ko">바이어·물류 파트너를 위한 3종 제품·카톤 사양.</span><span class="en">Unit and carton specifications for all three SKUs.</span><span class="jp">全3種の製品・カートン仕様。</span></p>
+    <table class="stable">
+      <thead><tr>
+        <th></th>
+        <th>8 Peptide Double Volume<br>Lip Treatment</th>
+        <th>AI Glow Repair<br>Tinted Sunscreen SPF50+ PA++++</th>
+        <th>AI Lift &amp; Refine<br>Cream Wrap Mask</th>
+      </tr></thead>
+      <tbody>
+      <tr><td class="h"><span class="ko">용량</span><span class="en">Volume</span><span class="jp">容量</span></td>
+        <td><span class="m">10 mL · 0.34 fl.oz.</span></td>
+        <td><span class="m">40 mL · 1.35 fl.oz.</span></td>
+        <td><span class="m">18 g × 5</span> <span class="ko">(총 90 g)</span><span class="en">(90 g total)</span><span class="jp">(計90g)</span></td></tr>
+      <tr><td class="h"><span class="ko">제품(용기)</span><span class="en">Primary pack</span><span class="jp">製品（容器）</span></td>
+        <td><span class="ko">튜브</span><span class="en">Tube</span><span class="jp">チューブ</span> · <span class="m">Ø16 × H83 mm</span></td>
+        <td><span class="ko">오벌 튜브 용기</span><span class="en">Oval tube bottle</span><span class="jp">オーバルチューブ容器</span> · <span class="m">≈ 50 × 26 × 85 mm</span><div class="sub"><span class="ko">용기 도면(1:1) 기준 근사치</span><span class="en">approx., from 1:1 bottle drawing</span><span class="jp">容器図面(1:1)基準の近似値</span></div></td>
+        <td><span class="ko">파우치</span><span class="en">Pouch</span><span class="jp">パウチ</span> · <span class="m">150 × 190 mm</span><div class="sub"><span class="ko">1매 22.5–24.5 g (시트·필름 포함)</span><span class="en">22.5–24.5 g per sheet incl. fabric</span><span class="jp">1枚 22.5–24.5 g（シート込み）</span></div></td></tr>
+      <tr><td class="h"><span class="ko">단상자</span><span class="en">Unit carton</span><span class="jp">化粧箱</span></td>
+        <td><span class="m">25 × 18 × 111 mm</span></td>
+        <td><span class="m">51 × 28 × 87 mm</span></td>
+        <td><span class="m">155 × 25 × 195 mm</span> <span class="ko">(파우치 5매입)</span><span class="en">(5 pouches)</span><span class="jp">(パウチ5枚入)</span></td></tr>
+      <tr><td class="h"><span class="ko">인박스</span><span class="en">Inner box</span><span class="jp">インボックス</span></td>
+        <td><span class="m">176 × 131 × 114 mm</span> · <span class="ko">45개입</span><span class="en">45 pcs</span><span class="jp">45個入</span></td>
+        <td><span class="m">149 × 108 × 91 mm</span> · <span class="ko">10개입</span><span class="en">10 pcs</span><span class="jp">10個入</span></td>
+        <td><span class="ko">— 없음 (아웃박스 직입수)</span><span class="en">— none (packed direct to master)</span><span class="jp">— なし（カートン直入れ）</span></td></tr>
+      <tr><td class="h"><span class="ko">아웃박스</span><span class="en">Master carton</span><span class="jp">アウトカートン</span></td>
+        <td><span class="m">420 × 285 × 155 mm</span><div class="sub"><span class="ko">콜마 공용 K-6 · 인박스 4 = 완제품 180개</span><span class="en">Kolmar K-6 · 4 inner boxes = 180 pcs</span><span class="jp">コルマーK-6 · インボックス4 = 180個</span></div></td>
+        <td><span class="m">345 × 170 × 200 mm</span><div class="sub"><span class="ko">인박스 6 = 완제품 60개</span><span class="en">6 inner boxes = 60 pcs</span><span class="jp">インボックス6 = 60個</span></div></td>
+        <td><span class="ko">단상자 42개입 (21×2) = 210매</span><span class="en">42 unit cartons (21×2) = 210 sheets</span><span class="jp">化粧箱42個入(21×2) = 210枚</span><div class="sub"><span class="ko">규격 제조사 확인 중</span><span class="en">dimensions pending</span><span class="jp">寸法確認中</span></div> <span class="tbc">TBC</span></td></tr>
+      <tr><td class="h"><span class="ko">카톤 총중량</span><span class="en">Carton gross wt.</span><span class="jp">カートン総重量</span></td>
+        <td><span class="m">4.8 kg</span><div class="sub"><span class="ko">180개 기준</span><span class="en">per 180 pcs</span><span class="jp">180個あたり</span></div></td>
+        <td><span class="m">4.0 kg</span><div class="sub"><span class="ko">60개 기준</span><span class="en">per 60 pcs</span><span class="jp">60個あたり</span></div></td>
+        <td><span class="tbc">TBC</span></td></tr>
+      <tr><td class="h"><span class="ko">팔레트</span><span class="en">Pallet</span><span class="jp">パレット</span></td>
+        <td><span class="m">1100 × 1100</span> · <span class="ko">2단 적재</span><span class="en">2 tiers</span><span class="jp">2段積み</span></td>
+        <td><span class="m">1100 × 1100</span> · <span class="ko">적재높이 1,500 mm</span><span class="en">stack height 1,500 mm</span><span class="jp">積載高1,500 mm</span></td>
+        <td><span class="m">1100 × 1100</span> · <span class="ko">6×6단</span><span class="en">6 × 6 tiers</span><span class="jp">6×6段</span></td></tr>
+      <tr><td class="h"><span class="ko">HS 코드</span><span class="en">HS code</span><span class="jp">HSコード</span></td>
+        <td><span class="m">3304.10</span></td>
+        <td><span class="m">3304.99</span></td>
+        <td><span class="m">3307.90</span></td></tr>
+      <tr><td class="h"><span class="ko">바코드</span><span class="en">Barcode (EAN-13)</span><span class="jp">バーコード</span></td>
+        <td><span class="m">8809971489843</span></td>
+        <td><span class="m">8800366204447</span></td>
+        <td><span class="m">8800397340015</span><span class="ko"> (5매입)</span><span class="en"> (5-pack)</span><span class="jp">（5枚入）</span></td></tr>
+      </tbody>
+    </table>
+    <div class="fnote" style="margin-top:8px"><span class="ko">* 치수 단위 mm (가로 × 세로 × 높이) · ≈/추정 표기는 실측 후 확정 · TBC = 제조사 확인 중 · 2026-09 기준</span><span class="en">* All dimensions in mm (W × D × H) · ≈/est. to be finalised after measurement · TBC = pending confirmation · as of Sep 2026</span><span class="jp">* 寸法単位 mm（幅 × 奥行 × 高さ）· ≈/推定は実測後に確定 · TBC = 確認中 · 2026年9月時点</span></div>
+  </div>
+</section>
+
+<!-- 14 DOCUMENTS -->
+<section class="slide sw docs">
+  <div class="content">
+    <div class="eyebrow">14 — DOCUMENTS</div>
+    <h2><span class="ko">제출 가능 <em>서류.</em></span><span class="en">Documents <em>on request.</em></span><span class="jp">提出可能な<em>書類。</em></span></h2>
+    <p class="lede"><span class="ko">입점 심사·통관·해외 등록용 — 요청 즉시 영문 제공.</span><span class="en">For listing review, customs and overseas registration — available in English on request.</span><span class="jp">入店審査・通関・海外登録用 — ご要望に応じて英文で提供。</span></p>
+    <div class="dgrid">
+      <div class="dcol"><h3>8 Peptide Double Volume Lip Treatment</h3><div class="code">Mfr. Kolmar Korea · 10 mL</div>
+        <div class="lab"><span class="ko">즉시 제공</span><span class="en">READY</span><span class="jp">即時提供</span></div><ul><li>Full ingredient list (INCI)</li><li>Formula — Standard &amp; Breakdown (JP / US·EU·GCC·CA)</li><li>Functional cosmetic report — anti-wrinkle (MFDS)</li><li>Packaging specification &amp; tube spec sheet</li><li>Manufacturer CGMP · ISO 22716 · plant registration</li></ul>
+        <div class="lab p"><span class="ko">준비 중</span><span class="en">IN PREPARATION</span><span class="jp">準備中</span></div><ul class="p"><li>CoA · MSDS · finished-product spec (renewed formula)</li><li>Clinical — lip volume &amp; moisture (Sep 2026)</li><li>Skin irritation test (Oct 2026)</li><li>Non-animal testing declaration</li></ul>
+      </div>
+      <div class="dcol"><h3>AI Glow Repair Tinted Sunscreen</h3><div class="code">Mfr. COSMAX · 40 mL · SPF50+ PA++++</div>
+        <div class="lab"><span class="ko">즉시 제공</span><span class="en">READY</span><span class="jp">即時提供</span></div><ul><li>Full ingredient list — KR / EN INCI / JP</li><li>Quantitative formula — EU INCI &amp; JP (with / without allergens)</li><li>MSDS · product spec · manufacturing process</li><li>Non-animal testing statement</li><li>Functional cosmetic report — UV protection (MFDS)</li><li>Skin irritation test (KR)</li><li>Clinical — 12h pore cover · 12h UV wear · sensitive skin · non-comedogenic · soothing</li><li>Packaging compatibility (CT) test</li></ul>
+        <div class="lab p"><span class="ko">준비 중</span><span class="en">IN PREPARATION</span><span class="jp">準備中</span></div><ul class="p"><li>SPF / PA report ISO 24444 (final)</li><li>Skin irritation test (EN)</li><li>Stability · shelf life · CMR · nano declaration</li></ul>
+      </div>
+      <div class="dcol"><h3>AI Lift &amp; Refine Cream Wrap Mask</h3><div class="code">Mfr. GENIC · 18 g × 5</div>
+        <div class="lab"><span class="ko">즉시 제공</span><span class="en">READY</span><span class="jp">即時提供</span></div><ul><li>Full ingredient list (single / composite)</li><li>Finished-product spec · CoA (per lot)</li><li>Stability test · challenge (preservative) test</li><li>Functional cosmetic report — brightening · anti-wrinkle (MFDS)</li><li>Manufacturer CGMP · ISO 22716 · US FDA facility registration</li><li>Fragrance-free (no allergen declaration required)</li></ul>
+        <div class="lab p"><span class="ko">준비 중</span><span class="en">IN PREPARATION</span><span class="jp">準備中</span></div><ul class="p"><li>Skin irritation test (final)</li><li>Clinical efficacy report (final)</li><li>MSDS</li></ul>
+      </div>
+    </div>
+    <div class="fnote" style="margin-top:8px"><span class="ko">* 준비 중 서류는 발급 즉시 업데이트 · 선크림은 미국(OTC) 제외 · 2026-09 기준</span><span class="en">* Items in preparation are updated as issued · Sunscreen not available for the US (OTC) · as of Sep 2026</span><span class="jp">* 準備中の書類は発行次第更新 · 日焼け止めは米国（OTC）対象外 · 2026年9月時点</span></div>
   </div>
 </section>
 
